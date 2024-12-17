@@ -1,7 +1,8 @@
 import tweepy
 from dotenv import load_dotenv
 import os
-
+import feedparser
+import pprint
 
 def get_client():
     load_dotenv()
@@ -16,6 +17,9 @@ def get_client():
 def create_tweet(client, tweet_text):
     client.create_tweet(text=tweet_text)
     
-client = get_client()
-create_tweet(client, "Back Again!")
+#client = get_client()
+#create_tweet(client, "Back Again!")
+
+feed = feedparser.parse("https://cointelegraph.com/rss/tag/bitcoin")
+pprint.pprint(feed.keys())
     
